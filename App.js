@@ -1,20 +1,32 @@
+import {NavigationContainer} from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Main from "./screens/Main";
+import DropdownPicker from "./screens/DropdownPicker";
+import Selectlist from "./screens/Selectlist";
+import { Picker } from '@react-native-picker/picker';
+import Modaldropdown from './screens/Modaldropdown';
+import Selectdropdown from './screens/Selectdropdown';
+import Elementdropdown from './screens/Elementdropdown';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar style="dark" />
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Main" component={Main} />
+          <Stack.Screen name="DropdownPicker" component={DropdownPicker} />
+          <Stack.Screen name="SelectList" component={Selectlist} />
+          <Stack.Screen name="Picker" component={Picker} />
+          <Stack.Screen name="Modal" component={Modaldropdown} />
+          <Stack.Screen name="SelectDropdown" component={Selectdropdown} />
+          <Stack.Screen name="ElementDropdown" component={Elementdropdown} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
